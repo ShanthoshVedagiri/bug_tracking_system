@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card">
+        <form [formGroup]="validateForm" #createForm="ngForm">
+          <div class="card-body">
+            <form _lpchecked="1">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bugname"
+                  placeholder="Bug Name"
+                  formControlName="bugname"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  placeholder="Bug description"
+                  formControlName="description"
+                />
+              </div>
+              <div class="form-group">
+                <select
+                  (change)="changeRole($event)"
+                  formControlName="severity"
+                  placeholder="Choose Severity"
+                >
+                  <option value="">Choose Severity</option>
+                  <option *ngFor="let city of Severity" [value]="city.value">
+                    {{ city.key }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <select
+                  (change)="changeStatus($event)"
+                  formControlName="status"
+                  placeholder="Choose Status"
+                >
+                  <option value="">Choose Status</option>
+                  <option *ngFor="let city of Status" [value]="city.value">
+                    {{ city.key }}
+                  </option>
+                </select>
+              </div>
+
+              <!-- <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirm-password"
+                    placeholder="confirm-password"
+                  />
+                </div> -->
+              <div
+                class="d-flex flex-row align-items-center justify-content-between"
+              >
+                <!-- <a href="#">Login</a> -->
+                <span class="btn btn-primary" (click)="createuser()">
+                  Create Bug</span
+                >
+                <!-- <button class="btn btn-primary" (click)="createuser()">
+                    
+                    Create Account
+                  </button> -->
+              </div>
+            </form>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

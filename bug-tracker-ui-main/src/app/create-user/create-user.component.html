@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card">
+        <form [formGroup]="validateForm" #createForm="ngForm">
+          <div class="card-body">
+            <form _lpchecked="1">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fitstname"
+                  placeholder="First Name"
+                  formControlName="userfirstname"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  placeholder="Last Name"
+                  formControlName="userlastname"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  formControlName="useremail"
+                />
+              </div>
+
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  formControlName="userpasswordhash"
+                />
+              </div>
+              <div class="form-group">
+                <select
+                  (change)="changeRole($event)"
+                  formControlName="userroles"
+                  placeholder="Choose role"
+                >
+                  <option value="">Choose Role</option>
+                  <option *ngFor="let city of Roles" [value]="city.value">
+                    {{ city.key }}
+                  </option>
+                </select>
+              </div>
+              <!-- <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm-password"
+                  placeholder="confirm-password"
+                />
+              </div> -->
+              <div
+                class="d-flex flex-row align-items-center justify-content-between"
+              >
+                <!-- <a href="#">Login</a> -->
+                <span   class="btn btn-primary" (click)="createuser()">
+                  Create Account</span>
+                <!-- <button class="btn btn-primary" (click)="createuser()">
+                  
+                  Create Account
+                </button> -->
+              </div>
+            </form>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

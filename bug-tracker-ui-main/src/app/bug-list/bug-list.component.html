@@ -1,0 +1,62 @@
+
+<div>
+  <div *ngIf="listofBugs && listofBugs.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Bug Name</th>
+          <th scope="col">Bug Description</th>
+          <th scope="col">Severity</th>
+          <th scope="col">Status</th>
+          <th scope="col">Updated by</th>
+          <th scope="col">Updated at</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userdata of listofBugs; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ userdata.bugname }}</td>
+          <td>{{ userdata.description }}</td>
+          <td>{{ userdata.severity }}</td>
+          <td>{{ userdata.statusval }}</td>
+          <td>{{ userdata.updatedby }}</td>
+          <td>{{ userdata.updatedat }}</td>
+          <td>
+            <div 
+            *ngIf="(isAdmin||isdeveloper)"
+              class="btn btn-primary"
+              style="margin: 10px"
+              (click)="enableUser(userdata)"
+            >
+              mark as In process
+            </div>
+            <div
+            *ngIf="(isAdmin||isdeveloper)"
+              class="btn btn-primary"
+              style="margin: 10px"
+              (click)="disableUser(userdata)"
+            >
+              mark as completed
+            </div>
+            <div
+            *ngIf="(isAdmin||isdeveloper)"
+              class="btn btn-danger"
+              style="margin: 10px"
+              (click)="delete(userdata)"
+            >
+              delete
+            </div>
+          </td>
+          <!-- <td>Otto</td>
+          <td>@mdo</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div>
+      <button type="button" class="btn btn-primary"  routerLink="/create-bug"  *ngIf="(isAdmin||istester)">Create Bug</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,55 @@
+<div>
+  <div *ngIf="listofUsers && listofUsers.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Role</th>
+          <th scope="col">Enabled</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userdata of listofUsers; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ userdata.userfirstname }}</td>
+          <td>{{ userdata.userlastname }}</td>
+          <td>{{ userdata.useremail }}</td>
+          <td>{{ userdata.role }}</td>
+          <td>{{ userdata.userenabled }}</td>
+          <td>
+            <div
+              class="btn btn-primary"
+              style="margin: 10px"
+              (click)="enableUser(userdata.useremail)"
+            >
+              Enable
+            </div>
+            <div
+              class="btn btn-primary"
+              style="margin: 10px"
+              (click)="disableUser(userdata.useremail)"
+            >
+              Disable
+            </div>
+          </td>
+          <!-- <td>Otto</td>
+          <td>@mdo</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      routerLink="/create-user"
+      *ngIf="isAdmin"
+    >
+      Create User
+    </button>
+  </div>
+</div>

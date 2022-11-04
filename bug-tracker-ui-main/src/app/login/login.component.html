@@ -1,0 +1,28 @@
+<div class="col-md-6 offset-md-3 mt-5"> 
+    <div class="card">
+        <h4 class="card-header">Angular 9 Role Based Auth Example</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="useremail">email</label>
+                    <input type="text" formControlName="useremail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.useremail.errors }" />
+                    <div *ngIf="submitted && f.useremail.errors" class="invalid-feedback">
+                        <div *ngIf="f.useremail.errors.required">useremail is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userpasswordhash">password</label>
+                    <input type="userpasswordhash" formControlName="userpasswordhash" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userpasswordhash.errors }" />
+                    <div *ngIf="submitted && f.userpasswordhash.errors" class="invalid-feedback">
+                        <div *ngIf="f.userpasswordhash.errors.required">userpasswordhash is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>            
